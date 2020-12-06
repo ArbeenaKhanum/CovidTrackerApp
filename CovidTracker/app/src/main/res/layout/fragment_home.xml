@@ -6,129 +6,298 @@
     android:layout_height="match_parent"
     tools:context=".fragments.HomeFragment">
 
-    <RelativeLayout
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="280dp"
-        android:background="@drawable/ic_call_background"
-        app:layout_constraintBottom_toTopOf="@id/contactGuideline"
+        android:layout_height="wrap_content"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
-        <ImageButton
-            android:id="@+id/ibMenu"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="20dp"
-            android:layout_marginTop="50dp"
-            android:background="@android:color/transparent"
-            android:src="@drawable/menu" />
-
-        <TextView
-            android:id="@+id/tvCovid19"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/ibMenu"
-            android:layout_marginStart="20dp"
-            android:layout_marginTop="10dp"
-            android:text="Covid-19"
-            android:textColor="@color/white"
-            android:textSize="24sp"
-            android:textStyle="bold" />
-
-        <TextView
-            android:id="@+id/tvCondition"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/tvCovid19"
-            android:layout_marginStart="20dp"
-            android:layout_marginTop="20dp"
-            android:text="Are you feeling sick?"
-            android:textColor="@color/white"
-            android:textSize="20sp"
-            android:textStyle="bold" />
-
-        <TextView
-            android:id="@+id/tvCovidDescription"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/tvCondition"
-            android:layout_marginStart="20dp"
-            android:layout_marginTop="8dp"
-            android:text="If you feel sick with any of covid-19 symptoms"
-            android:textColor="@color/white"
-            android:textSize="14sp" />
-
-        <TextView
-            android:id="@+id/tvCovidDescriptionTwo"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/tvCovidDescription"
-            android:layout_marginStart="20dp"
-            android:text="please call or SMS us immediately for help."
-            android:textColor="@color/white"
-            android:textSize="14sp" />
-
-        <ImageButton
-            android:id="@+id/ibNotification"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentEnd="true"
-            android:layout_marginTop="50dp"
-            android:layout_marginEnd="20dp"
-            android:background="@android:color/transparent"
-            android:src="@drawable/bell" />
-
-        <com.hbb20.CountryCodePicker
-            android:id="@+id/et1"
-            android:layout_width="wrap_content"
-            android:layout_height="41dp"
-            android:layout_below="@id/ibNotification"
-            android:layout_alignParentEnd="true"
-            android:layout_marginTop="20dp"
-            android:layout_marginEnd="20dp"
-            android:background="@drawable/white_bg"
-            app:ccp_textSize="14sp" />
-
-        <RelativeLayout
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@id/tvCovidDescriptionTwo"
-            android:layout_marginTop="10dp"
-            android:weightSum="2">
+            android:orientation="vertical"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="0.5dp"
+                android:layout_marginEnd="0.5dp"
+                android:background="@drawable/ic_call_background"
+                app:layout_constraintBottom_toTopOf="@id/contactGuideline"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <ImageButton
+                    android:id="@+id/ibMenu"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginTop="90dp"
+                    android:background="@android:color/transparent"
+                    android:src="@drawable/menu" />
+
+                <TextView
+                    android:id="@+id/tvCovid19"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/ibMenu"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginTop="22dp"
+                    android:text="Covid-19"
+                    android:textColor="@color/white"
+                    android:textSize="24sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/tvCondition"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/tvCovid19"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginTop="26dp"
+                    android:text="Are you feeling sick?"
+                    android:textColor="@color/white"
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/tvCovidDescription"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/tvCondition"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginTop="10dp"
+                    android:text="If you feel sick with any of covid-19 symptoms"
+                    android:textColor="@color/white"
+                    android:textSize="14sp" />
+
+                <TextView
+                    android:id="@+id/tvCovidDescriptionTwo"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/tvCovidDescription"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginTop="6dp"
+                    android:text="please call or SMS us immediately for help."
+                    android:textColor="@color/white"
+                    android:textSize="14sp" />
+
+                <ImageButton
+                    android:id="@+id/ibNotification"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginTop="90dp"
+                    android:layout_marginEnd="20dp"
+                    android:background="@android:color/transparent"
+                    android:src="@drawable/bell" />
+
+                <com.hbb20.CountryCodePicker
+                    android:id="@+id/et1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="41dp"
+                    android:layout_below="@id/ibNotification"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginTop="22dp"
+                    android:layout_marginEnd="20dp"
+                    android:background="@drawable/ic_white_bg"
+                    app:ccp_textSize="14sp" />
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/tvCovidDescriptionTwo"
+                    android:layout_marginTop="18dp"
+                    android:weightSum="2">
+
+                    <TextView
+                        android:layout_width="150dp"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentStart="true"
+                        android:layout_marginStart="20dp"
+                        android:background="@drawable/ic_call_bg"
+                        android:clickable="true"
+                        android:drawableStart="@drawable/ic_call"
+                        android:drawablePadding="16dp"
+                        android:paddingStart="20dp"
+                        android:paddingTop="12dp"
+                        android:paddingBottom="10dp"
+                        android:text="Call Now"
+                        android:textAlignment="textStart"
+                        android:textColor="@color/white" />
+
+                    <TextView
+                        android:layout_width="150dp"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentEnd="true"
+                        android:layout_marginEnd="20dp"
+                        android:background="@drawable/ic_sms_bg"
+                        android:drawableStart="@drawable/ic_sms_icon"
+                        android:drawablePadding="16dp"
+                        android:paddingStart="22dp"
+                        android:paddingTop="12dp"
+                        android:paddingBottom="12dp"
+                        android:text="Send SMS"
+                        android:textColor="@color/white" />
+                </RelativeLayout>
+
+            </RelativeLayout>
 
             <TextView
-                android:layout_width="150dp"
+                android:id="@+id/tvPrevention"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_alignParentStart="true"
-                android:layout_marginStart="20dp"
-                android:background="@drawable/red_bg"
-                android:clickable="true"
-                android:drawableStart="@drawable/ic_call"
-                android:drawablePadding="18dp"
-                android:paddingStart="15dp"
-                android:paddingTop="12dp"
-                android:paddingBottom="12dp"
-                android:text="Call now"
-                android:textAlignment="textStart"
-                android:textColor="@color/white" />
+                android:layout_margin="15dp"
+                android:text="Prevention"
+                android:textColor="@android:color/black"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toTopOf="@id/preventionGuideline"
+                app:layout_constraintStart_toStartOf="@id/verticalStartGuideline"
+                app:layout_constraintTop_toTopOf="@id/contactGuideline" />
 
-            <ImageButton
-                android:layout_width="150dp"
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_alignParentEnd="true"
-                android:layout_marginEnd="20dp"
-                android:background="@drawable/blue_bg"
-                android:textColor="@color/white" />
-        </RelativeLayout>
+                android:orientation="horizontal"
+                android:weightSum="3"
+                app:layout_constraintBottom_toTopOf="@id/preventionImagesGuideline"
+                app:layout_constraintEnd_toEndOf="@id/verticalEndGuideline"
+                app:layout_constraintStart_toStartOf="@id/verticalStartGuideline"
+                app:layout_constraintTop_toTopOf="@id/preventionGuideline">
 
-    </RelativeLayout>
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:src="@drawable/ic_six_feet_distance_img" />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:src="@drawable/ic_hand_wash_img" />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:src="@drawable/ic_mask_img" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:weightSum="3"
+                app:layout_constraintEnd_toEndOf="@id/verticalEndGuideline"
+                app:layout_constraintStart_toStartOf="@id/verticalStartGuideline"
+                app:layout_constraintTop_toTopOf="@id/preventionImagesGuideline">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="15dp"
+                    android:layout_weight="1"
+                    android:text="Avoid close contact"
+                    android:textAlignment="center"
+                    android:textColor="@android:color/black"
+                    android:textSize="14sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="15dp"
+                    android:layout_weight="1"
+                    android:text="Clean your hands often"
+                    android:textAlignment="center"
+                    android:textColor="@android:color/black"
+                    android:textSize="14sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="15dp"
+                    android:layout_weight="1"
+                    android:text="Wear a facemask"
+                    android:textAlignment="center"
+                    android:textColor="@android:color/black"
+                    android:textSize="14sp"
+                    android:textStyle="bold" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintBottom_toTopOf="@id/doTestsGuideline"
+                app:layout_constraintEnd_toEndOf="@id/verticalEndGuideline"
+                app:layout_constraintStart_toStartOf="@id/verticalStartGuideline"
+                app:layout_constraintTop_toTopOf="@id/preventionTextsGuideline">
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_do_the_test_img" />
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/contactGuideline"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_begin="280dp" />
+        app:layout_constraintGuide_begin="360dp" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/preventionGuideline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_begin="410dp" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/preventionImagesGuideline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_begin="520dp" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/preventionTextsGuideline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_begin="560dp" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/doTestsGuideline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_begin="690dp" />
+
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/verticalEndGuideline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_end="20dp" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/verticalStartGuideline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_begin="20dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
