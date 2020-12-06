@@ -5,7 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import com.example.covidtracker.fragments.AppInfoFragment
 import com.example.covidtracker.fragments.DataFragment
 import com.example.covidtracker.fragments.HomeFragment
-import com.example.covidtracker.fragments.StatasticFragment
+import com.example.covidtracker.fragments.StatisticFragment
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
 
@@ -14,6 +14,7 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+        openHomePage()
 
         val bottomNavigation: BottomNavigationView = findViewById(R.id.navigationView)
 
@@ -59,7 +60,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun openStatasticPage() {
-        val statasticFragment = StatasticFragment()
+        val statasticFragment = StatisticFragment()
         supportFragmentManager.beginTransaction()
             .replace(R.id.flContainer, statasticFragment, "StatasticFragment")
             .commit()

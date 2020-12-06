@@ -33,7 +33,7 @@
                 app:layout_constraintTop_toTopOf="parent">
 
                 <ImageButton
-                    android:id="@+id/ibMenu"
+                    android:id="@+id/ibHomeMenu"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="20dp"
@@ -45,7 +45,7 @@
                     android:id="@+id/tvCovid19"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_below="@id/ibMenu"
+                    android:layout_below="@id/ibHomeMenu"
                     android:layout_marginStart="20dp"
                     android:layout_marginTop="22dp"
                     android:text="Covid-19"
@@ -88,7 +88,7 @@
                     android:textSize="14sp" />
 
                 <ImageButton
-                    android:id="@+id/ibNotification"
+                    android:id="@+id/ibHomeNotification"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentEnd="true"
@@ -101,7 +101,7 @@
                     android:id="@+id/et1"
                     android:layout_width="wrap_content"
                     android:layout_height="41dp"
-                    android:layout_below="@id/ibNotification"
+                    android:layout_below="@id/ibHomeNotification"
                     android:layout_alignParentEnd="true"
                     android:layout_marginTop="22dp"
                     android:layout_marginEnd="20dp"
