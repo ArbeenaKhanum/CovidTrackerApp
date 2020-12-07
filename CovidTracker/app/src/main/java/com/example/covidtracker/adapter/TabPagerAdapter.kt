@@ -2,21 +2,22 @@ package com.example.covidtracker.adapter
 
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
-import androidx.fragment.app.FragmentStatePagerAdapter
+import androidx.fragment.app.FragmentPagerAdapter
 import com.example.covidtracker.fragments.GlobalFragment
 import com.example.covidtracker.fragments.MyCountryFragment
 
-class TabPagerAdapter(fm : FragmentManager, behavior : Int) : FragmentStatePagerAdapter(fm, behavior) {
+class TabPagerAdapter(fm: FragmentManager, behavior: Int) :
+    FragmentPagerAdapter(fm, behavior) {
     override fun getItem(position: Int): Fragment {
-       when(position) {
-           0 -> {
-               return MyCountryFragment()
-           }
+        when (position) {
+            0 -> {
+                return MyCountryFragment()
+            }
 
-           1 -> {
-               return GlobalFragment()
-           }
-       }
+            1 -> {
+                return GlobalFragment()
+            }
+        }
         return MyCountryFragment()
     }
 
@@ -34,7 +35,7 @@ class TabPagerAdapter(fm : FragmentManager, behavior : Int) : FragmentStatePager
                 return "Global"
             }
         }
-        return super.getPageTitle(position)
+        return "My Country"
     }
 
 }

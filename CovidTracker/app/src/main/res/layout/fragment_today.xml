@@ -1,14 +1,220 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".fragments.TodayFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:layout_height="wrap_content">
 
-</FrameLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_marginEnd="20dp"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:id="@+id/llFirstData"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:weightSum="2"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <FrameLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="10dp"
+                        android:layout_weight="1"
+                        android:background="@drawable/ic_affected"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="start"
+                            android:paddingStart="8dp"
+                            android:paddingTop="8dp"
+                            android:text="Affected"
+                            android:textColor="@color/white"
+                            android:textSize="14sp" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="bottom"
+                            android:paddingStart="8dp"
+                            android:paddingBottom="8dp"
+                            android:text="336,851"
+                            android:textColor="@color/white"
+                            android:textSize="24sp" />
+                    </FrameLayout>
+
+                    <FrameLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="10dp"
+                        android:layout_weight="1"
+                        android:background="@drawable/ic_death_bg"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="start"
+                            android:paddingStart="8dp"
+                            android:paddingTop="8dp"
+                            android:text="Death"
+                            android:textColor="@color/white"
+                            android:textSize="14sp" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="bottom"
+                            android:paddingStart="8dp"
+                            android:paddingBottom="8dp"
+                            android:text="9,620"
+                            android:textColor="@color/white"
+                            android:textSize="24sp" />
+                    </FrameLayout>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/llSecondData"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/llFirstData"
+                    android:weightSum="3"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <FrameLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="6dp"
+                        android:layout_weight="1"
+                        android:background="@drawable/ic_recovered"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="start"
+                            android:paddingStart="8dp"
+                            android:paddingTop="8dp"
+                            android:text="Recovered"
+                            android:textColor="@color/white"
+                            android:textSize="14sp" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="bottom"
+                            android:paddingStart="8dp"
+                            android:paddingBottom="8dp"
+                            android:text="17,977"
+                            android:textColor="@color/white"
+                            android:textSize="24sp" />
+                    </FrameLayout>
+
+                    <FrameLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="6dp"
+                        android:layout_weight="1"
+                        android:background="@drawable/ic_active_bg"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="start"
+                            android:paddingStart="8dp"
+                            android:paddingTop="8dp"
+                            android:text="Active"
+                            android:textColor="@color/white"
+                            android:textSize="14sp" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="bottom"
+                            android:paddingStart="8dp"
+                            android:paddingBottom="8dp"
+                            android:text="301,251"
+                            android:textColor="@color/white"
+                            android:textSize="24sp" />
+                    </FrameLayout>
+
+                    <FrameLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="6dp"
+                        android:layout_weight="1"
+                        android:background="@drawable/ic_serious_bg"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="start"
+                            android:paddingStart="8dp"
+                            android:paddingTop="8dp"
+                            android:text="Serious"
+                            android:textColor="@color/white"
+                            android:textSize="14sp" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="bottom"
+                            android:paddingStart="8dp"
+                            android:paddingBottom="8dp"
+                            android:text="8,702"
+                            android:textColor="@color/white"
+                            android:textSize="24sp" />
+                    </FrameLayout>
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/llGraphData"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/llSecondData"
+                android:layout_marginTop="25dp"
+                android:background="@drawable/ic_graph_bg"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginTop="24dp"
+                    android:layout_marginBottom="16dp"
+                    android:text="Daily New Cases"
+                    android:textColor="@android:color/black"
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:src="@drawable/ic_graph_img" />
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+</RelativeLayout>

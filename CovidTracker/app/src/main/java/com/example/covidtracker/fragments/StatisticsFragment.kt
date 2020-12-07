@@ -9,15 +9,16 @@ import androidx.fragment.app.FragmentPagerAdapter
 import com.example.covidtracker.R
 import com.example.covidtracker.adapter.TabPagerAdapter
 import com.example.covidtracker.adapter.ViewPagerAdapter
+import kotlinx.android.synthetic.main.fragment_my_country.*
 import kotlinx.android.synthetic.main.fragment_statistics.*
 
 class StatisticFragment : Fragment() {
-     lateinit var tabPagerAdapter: TabPagerAdapter
-    lateinit var viewPagerAdapter: ViewPagerAdapter
+    lateinit var tabPagerAdapter: TabPagerAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
     }
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -25,33 +26,23 @@ class StatisticFragment : Fragment() {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_statistics, container, false)
     }
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         setViewPagerAdapter()
         setViewPager()
-        setViewPagerAdapterDetails()
-        setViewPagerDetails()
+
     }
 
     private fun setViewPagerAdapter() {
         tabPagerAdapter = TabPagerAdapter(
             childFragmentManager,
-            FragmentPagerAdapter.BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT)
-    }
-    fun setViewPager() {
-        viewPager.adapter =  tabPagerAdapter
-        tabLayout.setupWithViewPager(viewPager)
-    }
-
-    fun setViewPagerAdapterDetails() {
-        viewPagerAdapter = ViewPagerAdapter(
-            childFragmentManager,
             FragmentPagerAdapter.BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT
         )
     }
 
-    fun setViewPagerDetails() {
-        viewPagerDetails.adapter = viewPagerAdapter
-        tabLayoutDetails.setupWithViewPager(viewPagerDetails)
+    fun setViewPager() {
+        viewPager.adapter = tabPagerAdapter
+        tabLayout.setupWithViewPager(viewPager)
     }
 }

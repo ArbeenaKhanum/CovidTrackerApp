@@ -2,12 +2,14 @@ package com.example.covidtracker.adapter
 
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
+import androidx.fragment.app.FragmentPagerAdapter
 import androidx.fragment.app.FragmentStatePagerAdapter
 import com.example.covidtracker.fragments.TodayFragment
 import com.example.covidtracker.fragments.TotalFragment
 import com.example.covidtracker.fragments.YesterdayFragment
 
-class ViewPagerAdapter(fragmentManager: FragmentManager, behavior : Int) : FragmentStatePagerAdapter(fragmentManager, behavior){
+class ViewPagerAdapter(fragmentManager: FragmentManager, behavior: Int) :
+    FragmentPagerAdapter(fragmentManager, behavior) {
     override fun getItem(position: Int): Fragment {
         when (position) {
             0 -> {
@@ -21,8 +23,10 @@ class ViewPagerAdapter(fragmentManager: FragmentManager, behavior : Int) : Fragm
             2 -> {
                 return YesterdayFragment()
             }
+            else -> {
+                return TotalFragment()
+            }
         }
-        return TodayFragment()
     }
 
     override fun getCount(): Int {
