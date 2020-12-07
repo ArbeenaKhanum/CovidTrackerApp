@@ -97,16 +97,14 @@
                     android:background="@android:color/transparent"
                     android:src="@drawable/bell" />
 
-                <com.hbb20.CountryCodePicker
-                    android:id="@+id/et1"
+                <Spinner
+                    android:id="@+id/spinner"
                     android:layout_width="wrap_content"
-                    android:layout_height="41dp"
+                    android:layout_height="wrap_content"
                     android:layout_below="@id/ibHomeNotification"
                     android:layout_alignParentEnd="true"
                     android:layout_marginTop="22dp"
-                    android:layout_marginEnd="20dp"
-                    android:background="@drawable/ic_white_bg"
-                    app:ccp_textSize="14sp" />
+                    android:layout_marginEnd="22dp" />
 
                 <RelativeLayout
                     android:layout_width="match_parent"
@@ -116,6 +114,7 @@
                     android:weightSum="2">
 
                     <TextView
+                        android:id="@+id/callNow"
                         android:layout_width="150dp"
                         android:layout_height="wrap_content"
                         android:layout_alignParentStart="true"
@@ -132,6 +131,7 @@
                         android:textColor="@color/white" />
 
                     <TextView
+                        android:id="@+id/sendSms"
                         android:layout_width="150dp"
                         android:layout_height="wrap_content"
                         android:layout_alignParentEnd="true"
