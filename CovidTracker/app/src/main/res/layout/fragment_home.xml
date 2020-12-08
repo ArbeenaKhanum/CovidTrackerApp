@@ -97,14 +97,19 @@
                     android:background="@android:color/transparent"
                     android:src="@drawable/bell" />
 
-                <Spinner
+                <com.hbb20.CountryCodePicker
                     android:id="@+id/spinner"
-                    android:layout_width="wrap_content"
+                    style="@style/tabStyle"
+                    android:layout_width="140dp"
                     android:layout_height="wrap_content"
                     android:layout_below="@id/ibHomeNotification"
                     android:layout_alignParentEnd="true"
                     android:layout_marginTop="22dp"
-                    android:layout_marginEnd="22dp" />
+                    android:layout_marginEnd="22dp"
+                    android:background="@drawable/ic_white_bg"
+                    android:spinnerMode="dropdown"
+                    app:ccp_showFullName="true"
+                    app:ccp_showPhoneCode="false"/>
 
                 <RelativeLayout
                     android:layout_width="match_parent"
@@ -148,6 +153,19 @@
 
             </RelativeLayout>
 
+            <fragment
+                android:id="@+id/flStatesFragment"
+                android:name="com.example.covidtracker.fragments.StatesFragment"
+                android:layout_width="match_parent"
+                android:layout_height="220dp"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="20dp"
+                android:layout_marginBottom="10dp"
+                app:layout_constraintBottom_toTopOf="@id/tvPrevention"
+                app:layout_constraintStart_toStartOf="@id/verticalStartGuideline"
+                app:layout_constraintTop_toTopOf="@id/contactGuideline" />
+
             <TextView
                 android:id="@+id/tvPrevention"
                 android:layout_width="wrap_content"
@@ -159,7 +177,7 @@
                 android:textStyle="bold"
                 app:layout_constraintBottom_toTopOf="@id/preventionGuideline"
                 app:layout_constraintStart_toStartOf="@id/verticalStartGuideline"
-                app:layout_constraintTop_toTopOf="@id/contactGuideline" />
+                app:layout_constraintTop_toTopOf="@id/flStatesFragment" />
 
             <LinearLayout
                 android:layout_width="match_parent"

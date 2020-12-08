@@ -4,4 +4,8 @@
         <item name="textAllCaps">false</item>
         <item name="android:textStyle">bold</item>
     </style>
+
+    <style name="Spinner">
+        <item name="backgroundTint">@color/black</item>
+    </style>
 </resources>

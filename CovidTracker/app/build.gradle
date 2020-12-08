@@ -42,7 +42,6 @@ dependencies {
     implementation 'com.google.android.material:material:1.2.1'
     implementation 'androidx.constraintlayout:constraintlayout:2.0.4'
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
-    implementation 'androidx.viewpager2:viewpager2:1.0.0'
     implementation 'androidx.viewpager:viewpager:1.0.0'
     testImplementation 'junit:junit:4.+'
     androidTestImplementation 'androidx.test.ext:junit:1.1.2'
@@ -50,4 +49,14 @@ dependencies {
     implementation 'com.android.support:design:30.0.2'
     implementation 'com.hbb20:ccp:2.3.1'
     implementation 'com.google.android.material:material:1.2.1'
+
+    // Retrofit dependency which will be used to make network calls
+    implementation 'com.squareup.retrofit2:retrofit:2.6.0'
+    // GSON library which is used to convert POJO to JSON and vice versa
+    implementation 'com.squareup.retrofit2:converter-gson:2.5.0'
+    // okhttp library used to observe the api call logs on LogCat
+    implementation 'com.squareup.okhttp3:logging-interceptor:3.12.3'
+
+    //view model
+    implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.2.0'
 }

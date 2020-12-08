@@ -4,19 +4,34 @@ import android.content.Intent
 import android.content.pm.PackageManager
 import android.net.Uri
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.AbsListView
+import android.widget.AdapterView
+import android.widget.ArrayAdapter
+import android.widget.Toast
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
+import androidx.fragment.app.Fragment
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.covidtracker.R
+import com.example.covidtracker.UIModel.StatesUIModel
+import com.example.covidtracker.adapter.StatesAdapter
+import com.example.covidtracker.listerners.StatesRecyclerViewItemClick
+import com.example.covidtracker.model.StatesResponseModel
+import com.example.covidtracker.viewmodel.StatesViewModel
 import kotlinx.android.synthetic.main.fragment_home.*
-import java.util.jar.Manifest
+import kotlinx.android.synthetic.main.fragment_states.*
 
 
-class HomeFragment : Fragment() {
+class HomeFragment : Fragment(), StatesRecyclerViewItemClick{
     val PhoneCallRequestCode: Int = 101
+    private lateinit var statesViewModel: StatesViewModel
+    private lateinit var statesAdapter: StatesAdapter
+    private val statesResponseList = emptyList<StatesResponseModel>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -33,6 +48,9 @@ class HomeFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         initViews(view)
+
+        var country = spinner.selectedCountryName
+        country = "USA"
     }
 
     private fun initViews(view: View) {
@@ -42,6 +60,45 @@ class HomeFragment : Fragment() {
 
         sendSms.setOnClickListener {
             sendSMS()
+        }
+
+        statesViewModel = ViewModelProvider(this).get(StatesViewModel::class.java)
+        setRecyclerStateData()
+        observeLiveData()
+        statesViewModel.statesApiCall()
+
+
+//        spinnerSelection(view)
+
+//        tvCovid19.setOnClickListener {
+//            viewListOfStates(view)
+//        }
+    }
+
+    private fun observeLiveData() {
+        statesViewModel.liveData.observe(this, Observer {
+            when (it) {
+                is StatesUIModel.Success -> {
+                    statesAdapter.updateStatesList(statesResponseList)
+                }
+
+                is StatesUIModel.Failure -> {
+                    Toast.makeText(
+                        context,
+                        "Error message ${it.error}",
+                        Toast.LENGTH_SHORT
+                    ).show()
+                }
+            }
+        })
+    }
+
+    private fun setRecyclerStateData() {
+        statesAdapter = StatesAdapter(statesResponseList,this)
+        val layoutManager = LinearLayoutManager(context)
+        rlListOfStates.apply {
+            this.layoutManager = layoutManager
+            adapter = statesAdapter
         }
     }
 
@@ -105,4 +162,31 @@ class HomeFragment : Fragment() {
         callIntent.data = Uri.parse("tel:1234567890")
         startActivity(callIntent)
     }
+
+    override fun onStateClicked(statesResponse: StatesResponseModel, position: Int) {
+        TODO("Not yet implemented")
+    }
+
+    //    private fun viewListOfStates(view: View) {
+//        openStatesFragment(view)
+//    }
+
+//    private fun openStatesFragment(view: View) {
+//        val statesFragment = StatesFragment()
+//        fragmentManager?.beginTransaction()
+//            ?.add(R.id.flStatesFragment, statesFragment, "statesFragment")
+//            ?.commit()
+//    }
+
+//    private fun spinnerSelection(view: View) {
+//        val countryList = ArrayList<String>()
+//        countryList.add("USA")
+//        countryList.add("INDIA")
+//        countryList.add("EUROPE")
+//        countryList.add("AUSTRALIA")
+//
+//        val arrayAdapter = context?.let { ArrayAdapter<String>(it, R.layout.support_simple_spinner_dropdown_item, countryList) }
+//        spinner.adapter = arrayAdapter
+//    }
+
 }
