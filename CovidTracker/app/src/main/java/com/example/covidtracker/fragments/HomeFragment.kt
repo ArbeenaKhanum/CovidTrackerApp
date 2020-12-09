@@ -15,19 +15,23 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.covidtracker.R
+import com.example.covidtracker.UIModel.StateDataUIModel
 import com.example.covidtracker.model.StatesResponseModel
 import com.example.covidtracker.UIModel.StatesUIModel
 import com.example.covidtracker.adapter.StatesAdapter
 import com.example.covidtracker.listerners.StatesRecyclerViewItemClick
+import com.example.covidtracker.model.StateDataResponseModel
+import com.example.covidtracker.viewmodel.StateDataViewModel
 import com.example.covidtracker.viewmodel.StatesViewModel
 import kotlinx.android.synthetic.main.fragment_home.*
 
 
 class HomeFragment : Fragment(), StatesRecyclerViewItemClick {
     val PhoneCallRequestCode: Int = 101
-     lateinit var statesViewModel : StatesViewModel
+    lateinit var statesViewModel: StatesViewModel
     lateinit var statesAdapter: StatesAdapter
-     val statesResponseList = emptyList<StatesResponseModel>()
+    val statesResponseList = emptyList<StatesResponseModel>()
+    lateinit var statesDataViewModel: StateDataViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -52,6 +56,9 @@ class HomeFragment : Fragment(), StatesRecyclerViewItemClick {
         })
 
 
+        statesDataViewModel = ViewModelProvider(this).get(StateDataViewModel::class.java)
+        observeLiveStatesDetailsData()
+
         initViews(view)
 
         var country = spinner.selectedCountryName
@@ -66,6 +73,24 @@ class HomeFragment : Fragment(), StatesRecyclerViewItemClick {
         sendSms.setOnClickListener {
             sendSMS()
         }
+    }
+
+    private fun observeLiveStatesDetailsData() {
+        statesDataViewModel.liveDataOfState.observe(this, Observer {
+            when (it) {
+
+                is StateDataUIModel.Success -> {
+                    it.stateDataResponseModel
+                }
+
+                is StateDataUIModel.Failure -> {
+                    Toast.makeText(
+                        context, "Error message ${it.error}",
+                        Toast.LENGTH_SHORT
+                    ).show()
+                }
+            }
+        })
     }
 
     private fun observeLiveData() {
@@ -157,7 +182,18 @@ class HomeFragment : Fragment(), StatesRecyclerViewItemClick {
     }
 
     override fun onStateClicked(statesResponse: StatesResponseModel, position: Int) {
-        TODO("Not yet implemented")
+        val openStatisticFragment = StatisticFragment()
+        val bundle = Bundle()
+        bundle.putString("stateData", statesResponse.state)
+        Toast.makeText(
+            context,
+            "State Name " + statesResponse.state + " " + "position " + position,
+            Toast.LENGTH_LONG
+        ).show()
+        openStatisticFragment.arguments = bundle
+        fragmentManager?.beginTransaction()
+            ?.add(R.id.flContainer, openStatisticFragment, "StatisticFragment")
+            ?.addToBackStack("openStatisticFragment")?.commit()
     }
 
 

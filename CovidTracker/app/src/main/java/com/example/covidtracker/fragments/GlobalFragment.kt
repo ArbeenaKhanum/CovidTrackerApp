@@ -7,11 +7,11 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.FragmentPagerAdapter
 import com.example.covidtracker.R
-import com.example.covidtracker.adapter.ViewPagerAdapter
+import com.example.covidtracker.adapter.ViewPagerCountryAdapter
 import kotlinx.android.synthetic.main.fragment_my_country.*
 
 class GlobalFragment : Fragment() {
-    lateinit var viewPagerAdapter: ViewPagerAdapter
+    lateinit var viewPagerAdapter: ViewPagerCountryAdapter
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -28,7 +28,7 @@ class GlobalFragment : Fragment() {
     }
 
     fun setViewPagerAdapterDetails() {
-        viewPagerAdapter = ViewPagerAdapter(
+        viewPagerAdapter = ViewPagerCountryAdapter(
             childFragmentManager,
             FragmentPagerAdapter.BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT
         )

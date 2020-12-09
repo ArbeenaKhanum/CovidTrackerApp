@@ -8,8 +8,6 @@ import android.view.ViewGroup
 import androidx.fragment.app.FragmentPagerAdapter
 import com.example.covidtracker.R
 import com.example.covidtracker.adapter.TabPagerAdapter
-import com.example.covidtracker.adapter.ViewPagerAdapter
-import kotlinx.android.synthetic.main.fragment_my_country.*
 import kotlinx.android.synthetic.main.fragment_statistics.*
 
 class StatisticFragment : Fragment() {

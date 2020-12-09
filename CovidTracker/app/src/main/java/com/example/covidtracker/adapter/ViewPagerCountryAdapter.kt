@@ -3,28 +3,27 @@ package com.example.covidtracker.adapter
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentPagerAdapter
-import androidx.fragment.app.FragmentStatePagerAdapter
-import com.example.covidtracker.fragments.TodayFragment
-import com.example.covidtracker.fragments.TotalFragment
-import com.example.covidtracker.fragments.YesterdayFragment
+import com.example.covidtracker.fragments.TodayCountryFragment
+import com.example.covidtracker.fragments.TotalCountryFragment
+import com.example.covidtracker.fragments.YesterdayCountryFragment
 
-class ViewPagerAdapter(fragmentManager: FragmentManager, behavior: Int) :
+class ViewPagerCountryAdapter(fragmentManager: FragmentManager, behavior: Int) :
     FragmentPagerAdapter(fragmentManager, behavior) {
     override fun getItem(position: Int): Fragment {
         when (position) {
             0 -> {
-                return TotalFragment()
+                return TotalCountryFragment()
             }
 
             1 -> {
-                return TodayFragment()
+                return TodayCountryFragment()
             }
 
             2 -> {
-                return YesterdayFragment()
+                return YesterdayCountryFragment()
             }
             else -> {
-                return TotalFragment()
+                return TotalCountryFragment()
             }
         }
     }
