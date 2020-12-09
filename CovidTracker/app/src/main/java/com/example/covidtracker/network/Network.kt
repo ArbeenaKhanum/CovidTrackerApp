@@ -13,8 +13,9 @@ class Network {
 
         fun getInstance(): Retrofit {
             return Retrofit.Builder().addConverterFactory(GsonConverterFactory.create())
-                .baseUrl("https://api.covidtracking.com")
+                .baseUrl("https://api.covidtracking.com/")
                 .client(OkHttpClient.Builder().addInterceptor(httpLoggingInterceptor).build())
+                .addConverterFactory(GsonConverterFactory.create())
                 .build()
         }
     }

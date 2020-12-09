@@ -1,10 +1,11 @@
 package com.example.covidtracker.viewmodel
 
+import android.view.View
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.example.covidtracker.UIModel.StatesUIModel
 import com.example.covidtracker.model.StatesResponseModel
+import com.example.covidtracker.UIModel.StatesUIModel
 import com.example.covidtracker.repository.StatesRepository
 import retrofit2.Call
 import retrofit2.Callback

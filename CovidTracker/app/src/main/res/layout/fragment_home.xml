@@ -153,18 +153,25 @@
 
             </RelativeLayout>
 
-            <fragment
-                android:id="@+id/flStatesFragment"
-                android:name="com.example.covidtracker.fragments.StatesFragment"
-                android:layout_width="match_parent"
-                android:layout_height="220dp"
+            <Button
+                android:id="@+id/btnViewStates"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:layout_marginStart="20dp"
+                android:layout_marginTop="12dp"
+                android:textColor="@color/white"
+                android:clickable="true"
+                android:layout_marginBottom="12dp"
+                android:background="@drawable/blue_bg"
+                android:text="View States" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rlListOfStates"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
-                android:layout_marginEnd="20dp"
-                android:layout_marginBottom="10dp"
-                app:layout_constraintBottom_toTopOf="@id/tvPrevention"
-                app:layout_constraintStart_toStartOf="@id/verticalStartGuideline"
-                app:layout_constraintTop_toTopOf="@id/contactGuideline" />
+                android:layout_marginStart="20dp"
+                android:layout_marginEnd="20dp" />
 
             <TextView
                 android:id="@+id/tvPrevention"
@@ -177,7 +184,7 @@
                 android:textStyle="bold"
                 app:layout_constraintBottom_toTopOf="@id/preventionGuideline"
                 app:layout_constraintStart_toStartOf="@id/verticalStartGuideline"
-                app:layout_constraintTop_toTopOf="@id/flStatesFragment" />
+                app:layout_constraintTop_toTopOf="@id/rlListOfStates" />
 
             <LinearLayout
                 android:layout_width="match_parent"

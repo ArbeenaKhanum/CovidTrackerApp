@@ -4,8 +4,8 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.covidtracker.R
-import com.example.covidtracker.listerners.StatesRecyclerViewItemClick
 import com.example.covidtracker.model.StatesResponseModel
+import com.example.covidtracker.listerners.StatesRecyclerViewItemClick
 import com.example.covidtracker.viewholder.StatesViewHolder
 
 class StatesAdapter(
@@ -19,7 +19,7 @@ class StatesAdapter(
     }
 
     override fun getItemCount(): Int {
-        return statesResponseList.size
+        return this.statesResponseList.size
     }
 
     override fun onBindViewHolder(holder: StatesViewHolder, position: Int) {
