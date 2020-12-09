@@ -31,7 +31,6 @@ class HomeFragment : Fragment(), StatesRecyclerViewItemClick {
     lateinit var statesViewModel: StatesViewModel
     lateinit var statesAdapter: StatesAdapter
     val statesResponseList = emptyList<StatesResponseModel>()
-    lateinit var statesDataViewModel: StateDataViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -55,10 +54,6 @@ class HomeFragment : Fragment(), StatesRecyclerViewItemClick {
             statesViewModel.statesApiCall()
         })
 
-
-        statesDataViewModel = ViewModelProvider(this).get(StateDataViewModel::class.java)
-        observeLiveStatesDetailsData()
-
         initViews(view)
 
         var country = spinner.selectedCountryName
@@ -73,24 +68,6 @@ class HomeFragment : Fragment(), StatesRecyclerViewItemClick {
         sendSms.setOnClickListener {
             sendSMS()
         }
-    }
-
-    private fun observeLiveStatesDetailsData() {
-        statesDataViewModel.liveDataOfState.observe(this, Observer {
-            when (it) {
-
-                is StateDataUIModel.Success -> {
-                    it.stateDataResponseModel
-                }
-
-                is StateDataUIModel.Failure -> {
-                    Toast.makeText(
-                        context, "Error message ${it.error}",
-                        Toast.LENGTH_SHORT
-                    ).show()
-                }
-            }
-        })
     }
 
     private fun observeLiveData() {
