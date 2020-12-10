@@ -2,14 +2,12 @@ package com.example.covidtracker
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import com.example.covidtracker.fragments.AppInfoFragment
-import com.example.covidtracker.fragments.DataFragment
-import com.example.covidtracker.fragments.HomeFragment
-import com.example.covidtracker.fragments.StatisticFragment
+import com.example.covidtracker.fragments.*
+import com.example.covidtracker.listerners.FragmentListener
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : AppCompatActivity(), FragmentListener {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -71,5 +69,13 @@ class MainActivity : AppCompatActivity() {
         supportFragmentManager.beginTransaction()
             .replace(R.id.flContainer, homeFragment, "HomeFragment")
             .commit()
+    }
+
+    override fun openStats(state:String) {
+        val frag = TodayCountryFragment()
+        val bundle = Bundle()
+        bundle.putString("data",state)
+        frag.arguments = bundle
+        supportFragmentManager.beginTransaction().replace(R.id.flContainer, frag).commit()
     }
 }

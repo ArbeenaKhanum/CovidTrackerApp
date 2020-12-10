@@ -32,4 +32,7 @@ class StatesViewModel : ViewModel(), Callback<List<StatesResponseModel>> {
     fun statesApiCall() {
         statesRepository.getListOfStates()
     }
+
+    var stateData = MutableLiveData<String>()
+
 }

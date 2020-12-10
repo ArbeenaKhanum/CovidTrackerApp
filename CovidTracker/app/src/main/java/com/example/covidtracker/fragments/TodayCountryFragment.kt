@@ -11,6 +11,7 @@ import androidx.lifecycle.ViewModelProvider
 import com.example.covidtracker.R
 import com.example.covidtracker.UIModel.StateDataUIModel
 import com.example.covidtracker.viewmodel.StateDataViewModel
+import com.example.covidtracker.viewmodel.StatesViewModel
 import kotlinx.android.synthetic.main.fragment_country_today.*
 
 class TodayCountryFragment : Fragment() {
@@ -35,6 +36,20 @@ class TodayCountryFragment : Fragment() {
         val state: String = arguments?.getString("stateData").toString()
         observeLiveStatesTodayData()
         statesDataViewModel.stateData()
+        arguments?.let {
+            val data = it.getString("data")
+            Toast.makeText(context,"Data is " +data,Toast.LENGTH_SHORT).show()
+            print("debug : $data")
+
+        }
+        val statesViewModel = ViewModelProvider(requireActivity()).get(StatesViewModel::class.java)
+        statesViewModel.stateData.observe(requireActivity(), Observer {
+            print(":debug 1 : $it")
+            it?.let {
+                Toast.makeText(context,"Data is " +it,Toast.LENGTH_SHORT).show()
+                print("debug : $it")
+            }
+        })
     }
 
     private fun observeLiveStatesTodayData() {

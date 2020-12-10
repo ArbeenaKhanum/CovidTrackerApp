@@ -1,5 +1,6 @@
 package com.example.covidtracker.fragments
 
+import android.content.Context
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.net.Uri
@@ -17,6 +18,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.covidtracker.R
 import com.example.covidtracker.UIModel.StatesUIModel
 import com.example.covidtracker.adapter.StatesAdapter
+import com.example.covidtracker.listerners.FragmentListener
 import com.example.covidtracker.listerners.StatesRecyclerViewItemClick
 import com.example.covidtracker.model.StatesResponseModel
 import com.example.covidtracker.viewmodel.StatesViewModel
@@ -29,9 +31,17 @@ class HomeFragment : Fragment(), StatesRecyclerViewItemClick {
     lateinit var statesViewModel: StatesViewModel
     lateinit var statesAdapter: StatesAdapter
     val statesResponseList = emptyList<StatesResponseModel>()
+    private lateinit var listener : FragmentListener
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        statesViewModel = ViewModelProvider(requireActivity()).get(StatesViewModel::class.java)
+
+    }
+
+    override fun onAttach(context: Context) {
+        super.onAttach(context)
+        listener = context as FragmentListener
     }
 
     override fun onCreateView(
@@ -161,16 +171,18 @@ class HomeFragment : Fragment(), StatesRecyclerViewItemClick {
         val bundle = Bundle()
         totalCountryFragment.arguments = bundle;
         bundle.putString("stateData", statesResponse.state);
-        Toast.makeText(
-            context,
-            "State Name " + statesResponse.state + " " + "position " + position,
-            Toast.LENGTH_LONG
-        ).show()
+//        Toast.makeText(
+//            context,
+//            "State Name " + statesResponse.state + " " + "position " + position,
+//            Toast.LENGTH_LONG
+//        ).show()
 
-        statesViewModel = ViewModelProvider(requireActivity()).get(StatesViewModel::class.java)
+        statesViewModel.stateData.value = statesResponse.state
 
-        (activity!!.findViewById<View>(R.id.navigationView) as BottomNavigationView).selectedItemId =
-            R.id.statsPage
+//        (activity!!.findViewById<View>(R.id.navigationView) as BottomNavigationView).selectedItemId =
+//            R.id.statsPage
+        listener.openStats(statesResponse.state!!)
+
     }
 
 
