@@ -50,6 +50,7 @@
                             android:textSize="14sp" />
 
                         <TextView
+                            android:id="@+id/tvAffectedYesterday"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_gravity="bottom"
@@ -79,6 +80,7 @@
                             android:textSize="14sp" />
 
                         <TextView
+                            android:id="@+id/tvDeathYesterday"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_gravity="bottom"
@@ -119,6 +121,7 @@
                             android:textSize="14sp" />
 
                         <TextView
+                            android:id="@+id/tvRecoveredYesterday"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_gravity="bottom"
@@ -148,6 +151,7 @@
                             android:textSize="14sp" />
 
                         <TextView
+                            android:id="@+id/tvActiveYesterday"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_gravity="bottom"
@@ -177,6 +181,7 @@
                             android:textSize="14sp" />
 
                         <TextView
+                            android:id="@+id/tvSeriousYesterday"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_gravity="bottom"

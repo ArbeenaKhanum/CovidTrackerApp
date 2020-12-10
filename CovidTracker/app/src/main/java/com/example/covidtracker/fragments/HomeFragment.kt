@@ -15,14 +15,12 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.covidtracker.R
-import com.example.covidtracker.UIModel.StateDataUIModel
-import com.example.covidtracker.model.StatesResponseModel
 import com.example.covidtracker.UIModel.StatesUIModel
 import com.example.covidtracker.adapter.StatesAdapter
 import com.example.covidtracker.listerners.StatesRecyclerViewItemClick
-import com.example.covidtracker.model.StateDataResponseModel
-import com.example.covidtracker.viewmodel.StateDataViewModel
+import com.example.covidtracker.model.StatesResponseModel
 import com.example.covidtracker.viewmodel.StatesViewModel
+import com.google.android.material.bottomnavigation.BottomNavigationView
 import kotlinx.android.synthetic.main.fragment_home.*
 
 
@@ -159,18 +157,20 @@ class HomeFragment : Fragment(), StatesRecyclerViewItemClick {
     }
 
     override fun onStateClicked(statesResponse: StatesResponseModel, position: Int) {
-        val openStatisticFragment = StatisticFragment()
+        val totalCountryFragment = TotalCountryFragment()
         val bundle = Bundle()
-        bundle.putString("stateData", statesResponse.state)
+        totalCountryFragment.arguments = bundle;
+        bundle.putString("stateData", statesResponse.state);
         Toast.makeText(
             context,
             "State Name " + statesResponse.state + " " + "position " + position,
             Toast.LENGTH_LONG
         ).show()
-        openStatisticFragment.arguments = bundle
-        fragmentManager?.beginTransaction()
-            ?.add(R.id.flContainer, openStatisticFragment, "StatisticFragment")
-            ?.addToBackStack("openStatisticFragment")?.commit()
+
+        statesViewModel = ViewModelProvider(requireActivity()).get(StatesViewModel::class.java)
+
+        (activity!!.findViewById<View>(R.id.navigationView) as BottomNavigationView).selectedItemId =
+            R.id.statsPage
     }
 
 

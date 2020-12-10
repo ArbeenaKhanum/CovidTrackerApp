@@ -50,7 +50,7 @@
                             android:textSize="14sp" />
 
                         <TextView
-                            android:id="@+id/tvAffectedData"
+                            android:id="@+id/tvAffectedToday"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_gravity="bottom"
@@ -80,7 +80,7 @@
                             android:textSize="14sp" />
 
                         <TextView
-                            android:id="@+id/tvDeathData"
+                            android:id="@+id/tvDeathToday"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_gravity="bottom"
@@ -121,7 +121,7 @@
                             android:textSize="14sp" />
 
                         <TextView
-                            android:id="@+id/tvRecoveredData"
+                            android:id="@+id/tvRecoveredToday"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_gravity="bottom"
@@ -151,7 +151,7 @@
                             android:textSize="14sp" />
 
                         <TextView
-                            android:id="@+id/tvActiveData"
+                            android:id="@+id/tvActiveToday"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_gravity="bottom"
@@ -181,7 +181,7 @@
                             android:textSize="14sp" />
 
                         <TextView
-                            android:id="@+id/tvSeriousData"
+                            android:id="@+id/tvSeriousToday"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_gravity="bottom"
