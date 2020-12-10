@@ -10,11 +10,7 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.example.covidtracker.R
 import com.example.covidtracker.UIModel.StateDataUIModel
-import com.example.covidtracker.listerners.StateDataFragmentListener
-import com.example.covidtracker.model.ApiResponseModel
-import com.example.covidtracker.model.StatesResponseModel
 import com.example.covidtracker.viewmodel.StateDataViewModel
-import kotlinx.android.synthetic.main.fragment_country_today.*
 import kotlinx.android.synthetic.main.fragment_country_total.*
 
 class TotalCountryFragment : Fragment() {
@@ -36,10 +32,10 @@ class TotalCountryFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         statesDataViewModel = ViewModelProvider(this).get(StateDataViewModel::class.java)
-//        var bundle = Bundle()
+
         val state : String = arguments?.getString("stateData").toString()
         observeLiveStatesDetailsData()
-        statesDataViewModel.stateData("ca")
+        statesDataViewModel.stateData()
 
     }
 
@@ -51,7 +47,7 @@ class TotalCountryFragment : Fragment() {
                     it.apiResponseModel
 
                     tvSeriousTotal.text = it.apiResponseModel[0].totalTestResultsIncrease.toString()
-                    tvRecoveredTotal.text = it.apiResponseModel[0].totalTestResults.toString()
+                    tvRecoveredTotal.text = it.apiResponseModel[0].posNeg.toString()
                     tvDeathTotal.text = it.apiResponseModel[0].death.toString()
                     tvActiveTotal.text = it.apiResponseModel[0].totalTestsViral.toString()
                     tvAffectedTotal.text = it.apiResponseModel[0].total.toString()

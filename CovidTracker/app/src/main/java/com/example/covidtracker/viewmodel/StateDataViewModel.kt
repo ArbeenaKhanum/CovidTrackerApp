@@ -15,24 +15,14 @@ class StateDataViewModel : ViewModel(), Callback<List<ApiResponseModel>> {
     private val mutableLiveData = MutableLiveData<StateDataUIModel>()
     val liveDataOfState: LiveData<StateDataUIModel> = mutableLiveData
 
-//    override fun onFailure(call: Call<StatesDataResponseModel>, t: Throwable) {
-//        mutableLiveData.value = StateDataUIModel.Failure(t.message!!)
-//    }
-//
-//    override fun onResponse(
-//        call: Call<StatesDataResponseModel>,
-//        response: Response<StatesDataResponseModel>
-//    ) {
-//        response.body()?.let {
-//            mutableLiveData.value = StateDataUIModel.Success(it)
-//        }
-//    }
-
     override fun onFailure(call: Call<List<ApiResponseModel>>, t: Throwable) {
         mutableLiveData.value = StateDataUIModel.Failure(t.message!!)
     }
 
-    override fun onResponse(call: Call<List<ApiResponseModel>>, response: Response<List<ApiResponseModel>>) {
+    override fun onResponse(
+        call: Call<List<ApiResponseModel>>,
+        response: Response<List<ApiResponseModel>>
+    ) {
 
         response.body()?.let {
             mutableLiveData.value = StateDataUIModel.Success(it)
@@ -40,7 +30,7 @@ class StateDataViewModel : ViewModel(), Callback<List<ApiResponseModel>> {
         }
     }
 
-    fun stateData(state : String) {
-        statesDataRepository.getStateData(state)
+    fun stateData() {
+        statesDataRepository.getStateData()
     }
 }

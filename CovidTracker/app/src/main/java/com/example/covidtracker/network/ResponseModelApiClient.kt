@@ -6,6 +6,6 @@ import retrofit2.http.GET
 import retrofit2.http.Path
 
 interface ResponseModelApiClient {
-    @GET("/v1/states/{state}/daily.json")
-    fun getStatesApi(@Path("state") state: String): Call<List<ApiResponseModel>>
+    @GET("/v1/states/ca/daily.json")
+    fun getStatesApi(): Call<List<ApiResponseModel>>
 }
