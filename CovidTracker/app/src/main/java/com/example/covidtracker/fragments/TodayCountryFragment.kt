@@ -1,6 +1,7 @@
 package com.example.covidtracker.fragments
 
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -10,12 +11,13 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.example.covidtracker.R
 import com.example.covidtracker.UIModel.StateDataUIModel
-import com.example.covidtracker.viewmodel.StateDataViewModel
+import com.example.covidtracker.viewmodel.StateListDataViewModel
 import com.example.covidtracker.viewmodel.StatesViewModel
 import kotlinx.android.synthetic.main.fragment_country_today.*
 
 class TodayCountryFragment : Fragment() {
-    private lateinit var statesDataViewModel: StateDataViewModel
+    lateinit var statesListDataViewModel: StateListDataViewModel
+    lateinit var statesViewModel: StatesViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -31,39 +33,34 @@ class TodayCountryFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        statesDataViewModel = ViewModelProvider(this).get(StateDataViewModel::class.java)
-
-        val state: String = arguments?.getString("stateData").toString()
+        statesViewModel = ViewModelProvider(requireActivity()).get(StatesViewModel::class.java)
+        statesListDataViewModel =
+            ViewModelProvider(requireActivity()).get(StateListDataViewModel::class.java)
+        getStateFromViewModel()
         observeLiveStatesTodayData()
-        statesDataViewModel.stateData()
-        arguments?.let {
-            val data = it.getString("data")
-            Toast.makeText(context,"Data is " +data,Toast.LENGTH_SHORT).show()
-            print("debug : $data")
+    }
 
-        }
-        val statesViewModel = ViewModelProvider(requireActivity()).get(StatesViewModel::class.java)
-        statesViewModel.stateData.observe(requireActivity(), Observer {
-            print(":debug 1 : $it")
-            it?.let {
-                Toast.makeText(context,"Data is " +it,Toast.LENGTH_SHORT).show()
-                print("debug : $it")
-            }
+    private fun getStateFromViewModel() {
+        statesViewModel.stateData.observe(this, Observer {
+            statesListDataViewModel.stateDataDetails(it)
+            Toast.makeText(context,it, Toast.LENGTH_SHORT).show()
         })
     }
 
     private fun observeLiveStatesTodayData() {
-        statesDataViewModel.liveDataOfState.observe(this, Observer {
+        statesListDataViewModel.liveDataOfState.observe(this, Observer {
             when (it) {
 
                 is StateDataUIModel.Success -> {
-                    it.apiResponseModel
+                    for (i in 0 until it.apiResponseModel.size) {
+                        Toast.makeText(context,it.apiResponseModel[i].state.toString(), Toast.LENGTH_SHORT).show()
 
-                    tvAffectedToday.text = it.apiResponseModel[1].positive.toString()
-                    tvRecoveredToday.text = it.apiResponseModel[1].posNeg.toString()
-                    tvDeathToday.text = it.apiResponseModel[1].death.toString()
-                    tvActiveToday.text = it.apiResponseModel[1].hospitalizedCurrently.toString()
-                    tvAffectedToday.text = it.apiResponseModel[1].positiveCasesViral.toString()
+                        tvAffectedToday.text = it.apiResponseModel[i].positiveCasesViral.toString()
+                        tvRecoveredToday.text = it.apiResponseModel[i].negative.toString()
+                        tvDeathToday.text = it.apiResponseModel[i].death.toString()
+                        tvActiveToday.text = it.apiResponseModel[i].hospitalizedCurrently.toString()
+                        tvSeriousToday.text = it.apiResponseModel[i].positive.toString()
+                    }
                 }
 
                 is StateDataUIModel.Failure -> {

@@ -31,18 +31,16 @@ class HomeFragment : Fragment(), StatesRecyclerViewItemClick {
     lateinit var statesViewModel: StatesViewModel
     lateinit var statesAdapter: StatesAdapter
     val statesResponseList = emptyList<StatesResponseModel>()
-    private lateinit var listener : FragmentListener
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        statesViewModel = ViewModelProvider(requireActivity()).get(StatesViewModel::class.java)
 
     }
 
-    override fun onAttach(context: Context) {
-        super.onAttach(context)
-        listener = context as FragmentListener
-    }
+//    override fun onAttach(context: Context) {
+//        super.onAttach(context)
+//        listener = context as FragmentListener
+//    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -55,7 +53,7 @@ class HomeFragment : Fragment(), StatesRecyclerViewItemClick {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        statesViewModel = ViewModelProvider(this).get(StatesViewModel::class.java)
+        statesViewModel = ViewModelProvider(requireActivity()).get(StatesViewModel::class.java)
         setRecyclerStateData()
         observeLiveData()
         btnViewStates.setOnClickListener(View.OnClickListener {
@@ -167,21 +165,24 @@ class HomeFragment : Fragment(), StatesRecyclerViewItemClick {
     }
 
     override fun onStateClicked(statesResponse: StatesResponseModel, position: Int) {
-        val totalCountryFragment = TotalCountryFragment()
-        val bundle = Bundle()
-        totalCountryFragment.arguments = bundle;
-        bundle.putString("stateData", statesResponse.state);
+
+        statesViewModel.stateData.value = statesResponse.state
+//        statesViewModel.sendSharedData(statesResponse.state.toString())
+        (activity!!.findViewById<View>(R.id.navigationView) as BottomNavigationView).selectedItemId =
+            R.id.statsPage
+
+//        val totalCountryFragment = TotalCountryFragment()
+//        val bundle = Bundle()
+//        totalCountryFragment.arguments = bundle;
+//        bundle.putString("stateData", statesResponse.state);
 //        Toast.makeText(
 //            context,
 //            "State Name " + statesResponse.state + " " + "position " + position,
 //            Toast.LENGTH_LONG
 //        ).show()
 
-        statesViewModel.stateData.value = statesResponse.state
-
-//        (activity!!.findViewById<View>(R.id.navigationView) as BottomNavigationView).selectedItemId =
-//            R.id.statsPage
-        listener.openStats(statesResponse.state!!)
+//        statesViewModel.stateData.value = statesResponse.state
+//        listener.openStats(statesResponse.state!!)
 
     }
 

@@ -10,12 +10,14 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.example.covidtracker.R
 import com.example.covidtracker.UIModel.StateDataUIModel
-import com.example.covidtracker.viewmodel.StateDataViewModel
+import com.example.covidtracker.viewmodel.StateListDataViewModel
+import com.example.covidtracker.viewmodel.StatesViewModel
 import kotlinx.android.synthetic.main.fragment_country_total.*
 
 class TotalCountryFragment : Fragment() {
 
-    private lateinit var statesDataViewModel: StateDataViewModel
+    private lateinit var statesListDataViewModel: StateListDataViewModel
+    lateinit var statesViewModel : StatesViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -31,26 +33,36 @@ class TotalCountryFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        statesDataViewModel = ViewModelProvider(this).get(StateDataViewModel::class.java)
-
-        val state : String = arguments?.getString("stateData").toString()
+        statesViewModel = ViewModelProvider(requireActivity()).get(StatesViewModel::class.java)
+        statesListDataViewModel = ViewModelProvider(requireActivity()).get(StateListDataViewModel::class.java)
+//
+//        val state : String = arguments?.getString("stateData").toString()
+        getStateFromViewModel()
         observeLiveStatesDetailsData()
-        statesDataViewModel.stateData()
 
     }
 
-    private fun observeLiveStatesDetailsData() {
-        statesDataViewModel.liveDataOfState.observe(this, Observer {
+    private fun getStateFromViewModel() {
+        statesViewModel.stateData.observe(this, Observer {
+            statesListDataViewModel.stateDataDetails(it)
+            Toast.makeText(context, it, Toast.LENGTH_SHORT).show()
+        })
+    }
+
+     private fun observeLiveStatesDetailsData() {
+        statesListDataViewModel.liveDataOfState.observe(this, Observer {
             when (it) {
 
                 is StateDataUIModel.Success -> {
-                    it.apiResponseModel
-
-                    tvSeriousTotal.text = it.apiResponseModel[0].totalTestResultsIncrease.toString()
-                    tvRecoveredTotal.text = it.apiResponseModel[0].posNeg.toString()
-                    tvDeathTotal.text = it.apiResponseModel[0].death.toString()
-                    tvActiveTotal.text = it.apiResponseModel[0].totalTestsViral.toString()
-                    tvAffectedTotal.text = it.apiResponseModel[0].total.toString()
+//                    it.apiResponseModel
+                    for (i in 0 until it.apiResponseModel.size) {
+                        tvSeriousTotal.text =
+                            it.apiResponseModel[i].totalTestResultsIncrease.toString()
+                        tvRecoveredTotal.text = it.apiResponseModel[i].posNeg.toString()
+                        tvDeathTotal.text = it.apiResponseModel[i].death.toString()
+                        tvActiveTotal.text = it.apiResponseModel[i].totalTestsViral.toString()
+                        tvAffectedTotal.text = it.apiResponseModel[i].total.toString()
+                    }
                 }
 
                 is StateDataUIModel.Failure -> {

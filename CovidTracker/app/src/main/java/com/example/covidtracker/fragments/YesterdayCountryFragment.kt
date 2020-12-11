@@ -10,11 +10,13 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.example.covidtracker.R
 import com.example.covidtracker.UIModel.StateDataUIModel
-import com.example.covidtracker.viewmodel.StateDataViewModel
+import com.example.covidtracker.viewmodel.StateListDataViewModel
+import com.example.covidtracker.viewmodel.StatesViewModel
 import kotlinx.android.synthetic.main.fragment_country_yesterday.*
 
 class YesterdayCountryFragment : Fragment() {
-    private lateinit var statesDataViewModel: StateDataViewModel
+    private lateinit var statesListDataViewModel: StateListDataViewModel
+    lateinit var statesViewModel: StatesViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -30,25 +32,34 @@ class YesterdayCountryFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        statesDataViewModel = ViewModelProvider(this).get(StateDataViewModel::class.java)
-
-        val state: String = arguments?.getString("stateData").toString()
+        statesViewModel = ViewModelProvider(requireActivity()).get(StatesViewModel::class.java)
+        statesListDataViewModel = ViewModelProvider(this).get(StateListDataViewModel::class.java)
+        getStateFromViewModel()
+//        val state: String = arguments?.getString("stateData").toString()
         observeLiveStatesYesterdayData()
-        statesDataViewModel.stateData()
+    }
+
+    private fun getStateFromViewModel() {
+        statesViewModel.stateData.observe(this, Observer {
+            statesListDataViewModel.stateDataDetails(it)
+            Toast.makeText(context, it, Toast.LENGTH_SHORT).show()
+        })
     }
 
     private fun observeLiveStatesYesterdayData() {
-        statesDataViewModel.liveDataOfState.observe(this, Observer {
+        statesListDataViewModel.liveDataOfState.observe(this, Observer {
             when (it) {
 
                 is StateDataUIModel.Success -> {
-                    it.apiResponseModel
-
-                    tvSeriousYesterday.text = it.apiResponseModel[2].positiveCasesViral.toString()
-                    tvRecoveredYesterday.text = it.apiResponseModel[2].negative.toString()
-                    tvDeathYesterday.text = it.apiResponseModel[2].death.toString()
-                    tvActiveYesterday.text = it.apiResponseModel[2].hospitalizedCurrently.toString()
-                    tvAffectedYesterday.text = it.apiResponseModel[2].positive.toString()
+                    for (i in 0 until it.apiResponseModel.size) {
+                        tvSeriousYesterday.text =
+                            it.apiResponseModel[i].positiveCasesViral.toString()
+                        tvRecoveredYesterday.text = it.apiResponseModel[i].negative.toString()
+                        tvDeathYesterday.text = it.apiResponseModel[i].death.toString()
+                        tvActiveYesterday.text =
+                            it.apiResponseModel[i].hospitalizedCurrently.toString()
+                        tvAffectedYesterday.text = it.apiResponseModel[i].positive.toString()
+                    }
                 }
 
                 is StateDataUIModel.Failure -> {

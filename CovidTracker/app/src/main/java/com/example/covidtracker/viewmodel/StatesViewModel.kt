@@ -33,6 +33,10 @@ class StatesViewModel : ViewModel(), Callback<List<StatesResponseModel>> {
         statesRepository.getListOfStates()
     }
 
-    var stateData = MutableLiveData<String>()
+    val stateData = MutableLiveData<String>()
+
+    fun sendSharedData(states: String) {
+        stateData.value = states
+    }
 
 }
