@@ -6,6 +6,6 @@ import retrofit2.http.GET
 
 interface StatesApiClient {
 
-    @GET("/v1/states/current.json")
+    @GET("/v1/states/info.json")
     fun getStatesNames() : Call<List<StatesResponseModel>>
 }

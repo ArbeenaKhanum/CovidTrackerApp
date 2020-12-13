@@ -10,7 +10,7 @@ class StatesViewHolder (private val view : View, private val statesListener :
         StatesRecyclerViewItemClick) : RecyclerView.ViewHolder(view) {
     fun setData(statesModel: StatesResponseModel) {
         view.apply {
-            tvStateName.text = statesModel.state
+            tvStateName.text = statesModel.name
 
             stateDataBtn.setOnClickListener {
                 statesListener.onStateClicked(statesModel, position)

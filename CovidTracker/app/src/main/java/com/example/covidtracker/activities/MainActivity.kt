@@ -1,7 +1,8 @@
-package com.example.covidtracker
+package com.example.covidtracker.activities
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import com.example.covidtracker.R
 import com.example.covidtracker.fragments.*
 import com.example.covidtracker.listerners.FragmentListener
 import com.google.android.material.bottomnavigation.BottomNavigationView

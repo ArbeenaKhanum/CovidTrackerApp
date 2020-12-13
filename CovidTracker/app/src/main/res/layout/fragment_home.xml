@@ -109,7 +109,7 @@
                     android:background="@drawable/ic_white_bg"
                     android:spinnerMode="dropdown"
                     app:ccp_showFullName="true"
-                    app:ccp_showPhoneCode="false"/>
+                    app:ccp_showPhoneCode="false" />
 
                 <RelativeLayout
                     android:layout_width="match_parent"
@@ -153,24 +153,35 @@
 
             </RelativeLayout>
 
-            <Button
-                android:id="@+id/btnViewStates"
+            <TextView
+                android:id="@+id/tvViewStates"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="20dp"
                 android:layout_marginTop="12dp"
-                android:textColor="@color/white"
                 android:clickable="true"
+                android:text="View States"
+                android:textAlignment="textStart"
+                android:textColor="@color/purple_500"
+                android:textSize="18sp" />
+
+            <Button
+                android:id="@+id/btnViewStates"
+                android:layout_width="48dp"
+                android:layout_height="45dp"
+                android:layout_marginStart="32dp"
+                android:layout_marginTop="10dp"
                 android:layout_marginBottom="12dp"
-                android:background="@drawable/blue_bg"
-                android:text="View States" />
+                android:background="@drawable/ic_list_of_states"
+                android:clickable="true"
+                android:textColor="@color/white" />
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/rlListOfStates"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
                 android:layout_marginStart="20dp"
+                android:layout_marginTop="10dp"
                 android:layout_marginEnd="20dp" />
 
             <TextView
