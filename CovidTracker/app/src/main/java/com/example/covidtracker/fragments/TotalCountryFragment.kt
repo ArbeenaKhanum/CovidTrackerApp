@@ -12,6 +12,7 @@ import com.example.covidtracker.R
 import com.example.covidtracker.UIModel.StateDataUIModel
 import com.example.covidtracker.viewmodel.StateListDataViewModel
 import com.example.covidtracker.viewmodel.StatesViewModel
+import com.example.covidtracker.viewmodelfactory.StatesViewModelFactory
 import kotlinx.android.synthetic.main.fragment_country_total.*
 
 class TotalCountryFragment : Fragment() {
@@ -33,7 +34,12 @@ class TotalCountryFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        statesViewModel = ViewModelProvider(requireActivity()).get(StatesViewModel::class.java)
+        val totalCountryFragment = TotalCountryFragment()
+        val bundle = Bundle()
+        totalCountryFragment.arguments = bundle;
+        bundle.getString("stateData");
+        statesViewModel =
+            StatesViewModelFactory(this.requireContext(), requireActivity()).create(StatesViewModel::class.java)
         statesListDataViewModel = ViewModelProvider(requireActivity()).get(StateListDataViewModel::class.java)
 //
 //        val state : String = arguments?.getString("stateData").toString()

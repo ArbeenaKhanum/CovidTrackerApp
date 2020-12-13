@@ -13,6 +13,7 @@ import com.example.covidtracker.R
 import com.example.covidtracker.UIModel.StateDataUIModel
 import com.example.covidtracker.viewmodel.StateListDataViewModel
 import com.example.covidtracker.viewmodel.StatesViewModel
+import com.example.covidtracker.viewmodelfactory.StatesViewModelFactory
 import kotlinx.android.synthetic.main.fragment_country_today.*
 
 class TodayCountryFragment : Fragment() {
@@ -33,7 +34,11 @@ class TodayCountryFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        statesViewModel = ViewModelProvider(requireActivity()).get(StatesViewModel::class.java)
+        statesViewModel =
+            StatesViewModelFactory(
+                this.requireContext(),
+                requireActivity()
+            ).create(StatesViewModel::class.java)
         statesListDataViewModel =
             ViewModelProvider(requireActivity()).get(StateListDataViewModel::class.java)
         getStateFromViewModel()
@@ -43,7 +48,7 @@ class TodayCountryFragment : Fragment() {
     private fun getStateFromViewModel() {
         statesViewModel.stateData.observe(this, Observer {
             statesListDataViewModel.stateDataDetails(it)
-            Toast.makeText(context,it, Toast.LENGTH_SHORT).show()
+            Toast.makeText(context, it, Toast.LENGTH_SHORT).show()
         })
     }
 
@@ -52,8 +57,12 @@ class TodayCountryFragment : Fragment() {
             when (it) {
 
                 is StateDataUIModel.Success -> {
-                    for (i in 0 until it.apiResponseModel.size) {
-                        Toast.makeText(context,it.apiResponseModel[i].state.toString(), Toast.LENGTH_SHORT).show()
+                    for (i in it.apiResponseModel.indices) {
+                        Toast.makeText(
+                            context,
+                            it.apiResponseModel[i].state.toString(),
+                            Toast.LENGTH_SHORT
+                        ).show()
 
                         tvAffectedToday.text = it.apiResponseModel[i].positiveCasesViral.toString()
                         tvRecoveredToday.text = it.apiResponseModel[i].negative.toString()

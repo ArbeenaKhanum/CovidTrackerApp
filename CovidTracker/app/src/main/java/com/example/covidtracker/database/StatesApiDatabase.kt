@@ -4,14 +4,13 @@ import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
-
-@Database(entities = [StatesDataDetails::class], version = 1, exportSchema = false)
+@Database(entities = [StatesDataDetails::class, StatesName::class], version = 1, exportSchema = false)
 abstract class StatesApiDatabase : RoomDatabase() {
     abstract val statesApiDao: StatesApiDao
+    abstract val statesNameDao: StatesNameDao
 
     companion object {
         private var INSTANCE: StatesApiDatabase? = null
-
         fun getInstance(context: Context): StatesApiDatabase {
             synchronized(this) {
                 var instance = INSTANCE
@@ -21,7 +20,6 @@ abstract class StatesApiDatabase : RoomDatabase() {
                             .build()
                     INSTANCE = instance
                 }
-
                 return instance
             }
         }

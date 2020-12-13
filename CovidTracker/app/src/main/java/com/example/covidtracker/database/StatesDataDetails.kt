@@ -3,7 +3,6 @@ package com.example.covidtracker.database
 import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
-
 @Entity(tableName = "StatesDataDetails")
 data class StatesDataDetails(
     @PrimaryKey(autoGenerate = true)
@@ -11,7 +10,8 @@ data class StatesDataDetails(
     @ColumnInfo(name = "affected")
     val affected: Int,
     @ColumnInfo(name = "death")
-    val death: Int, @ColumnInfo(name = "recovered")
+    val death: Int,
+    @ColumnInfo(name = "recovered")
     val recovered: Int,
     @ColumnInfo(name = "active")
     val active: String,
