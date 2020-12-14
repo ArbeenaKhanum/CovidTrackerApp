@@ -1,6 +1,9 @@
 package com.example.covidtracker.activities
 
+import android.content.Intent
 import android.os.Bundle
+import android.os.Handler
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.example.covidtracker.R
 import com.example.covidtracker.fragments.*
@@ -78,5 +81,22 @@ class MainActivity : AppCompatActivity(), FragmentListener {
         bundle.putString("data",state)
         frag.arguments = bundle
         supportFragmentManager.beginTransaction().replace(R.id.flContainer, frag).commit()
+    }
+
+    var singleBack = false
+
+    override fun onBackPressed() {
+        if (singleBack) {
+            super.onBackPressed()
+            return
+        }
+        singleBack = true
+        Toast.makeText(this, "Click again to exit", Toast.LENGTH_SHORT).show()
+        Handler().postDelayed(Runnable { singleBack = false }, 2000)
+        val run =
+            Runnable { startActivity(Intent(this, ExitActivity::class.java)) }
+        val mHandler = Handler()
+        mHandler.postAtTime(run, 15000)
+        finish()
     }
 }
