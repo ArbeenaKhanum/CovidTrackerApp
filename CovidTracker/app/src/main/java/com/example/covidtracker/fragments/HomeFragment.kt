@@ -4,6 +4,7 @@ import android.content.Intent
 import android.content.pm.PackageManager
 import android.net.Uri
 import android.os.Bundle
+import android.view.Gravity
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -12,18 +13,19 @@ import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.transition.Slide
+import androidx.transition.TransitionManager
 import com.example.covidtracker.R
-import com.example.covidtracker.model.StatesResponseModel
-import com.example.covidtracker.UIModel.StatesUIModel
+import com.example.covidtracker.activities.LogInActivity
 import com.example.covidtracker.adapter.StatesAdapter
 import com.example.covidtracker.listerners.StatesRecyclerViewItemClick
+import com.example.covidtracker.model.StatesResponseModel
 import com.example.covidtracker.viewmodel.StatesViewModel
 import com.example.covidtracker.viewmodelfactory.StatesViewModelFactory
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import kotlinx.android.synthetic.main.fragment_home.*
-import kotlinx.android.synthetic.main.list_of_states.*
+import kotlinx.android.synthetic.main.layoutslide.*
 
 
 class HomeFragment : Fragment(), StatesRecyclerViewItemClick {
@@ -54,7 +56,10 @@ class HomeFragment : Fragment(), StatesRecyclerViewItemClick {
         super.onViewCreated(view, savedInstanceState)
 
         statesViewModel =
-            StatesViewModelFactory(this.requireContext(), requireActivity()).create(StatesViewModel::class.java)
+            StatesViewModelFactory(
+                this.requireContext(),
+                requireActivity()
+            ).create(StatesViewModel::class.java)
 //          observeLiveData()
         setRecyclerStateData()
         btnViewStates.setOnClickListener(View.OnClickListener {
@@ -75,6 +80,35 @@ class HomeFragment : Fragment(), StatesRecyclerViewItemClick {
         sendSms.setOnClickListener {
             sendSMS()
         }
+        when (view?.id) {
+            R.id.ibHomeMenu -> {
+                slideRight()
+            }
+            R.id.layoutslide -> {
+                slideLeft()
+            }
+        }
+        ibHomeMenu.setOnClickListener {}
+
+        ivLogout.setOnClickListener(View.OnClickListener {
+            val i = Intent(context, LogInActivity::class.java)
+            startActivity(i)
+        })
+
+    }
+
+    private fun slideRight() {
+        val slide = Slide()
+        slide.slideEdge = Gravity.START
+        TransitionManager.beginDelayedTransition(layoutslide, slide)
+        layoutslide.visibility = View.VISIBLE
+    }
+
+    private fun slideLeft() {
+        val slide = Slide()
+        slide.slideEdge = Gravity.START
+        TransitionManager.beginDelayedTransition(layoutslide, slide)
+        layoutslide.visibility = View.GONE
     }
 
     private fun observeLiveDataFromDB() {
@@ -184,8 +218,10 @@ class HomeFragment : Fragment(), StatesRecyclerViewItemClick {
         val bundle = Bundle()
         totalCountryFragment.arguments = bundle;
         bundle.putString("stateData", statesResponse.name);
-        Toast.makeText(context, "State Name " + statesResponse.name
-                + " " + "position " + position, Toast.LENGTH_LONG).show()
+        Toast.makeText(
+            context, "State Name " + statesResponse.name
+                    + " " + "position " + position, Toast.LENGTH_LONG
+        ).show()
 
 //        statesViewModel.stateData.value = statesResponse.state
 //        listener.openStats(statesResponse.state!!)

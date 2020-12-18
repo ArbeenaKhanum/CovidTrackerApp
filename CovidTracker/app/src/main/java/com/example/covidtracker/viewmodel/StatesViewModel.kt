@@ -55,18 +55,13 @@ class StatesViewModel(private val context: Context, private val owner: Lifecycle
             })
     }
 
+    fun fetchStatesNameFromDB(): LiveData<List<StatesResponseModel>> {
+        return StatesApiDatabase.getInstance(context).statesNameDao.getStateNames()
+    }
+
     val stateData = MutableLiveData<String>()
 
     fun sendSharedData(states: String) {
         stateData.value = states
-    }
-
-
-    //    fun insertStateNameToDB(name : String) {
-//
-//    }
-//
-    fun fetchStatesNameFromDB(): LiveData<List<StatesResponseModel>> {
-        return StatesApiDatabase.getInstance(context).statesNameDao.getStateNames()
     }
 }

@@ -8,11 +8,11 @@ data class StatesDataDetails(
     @PrimaryKey(autoGenerate = true)
     var stateId: Int = 0,
     @ColumnInfo(name = "affected")
-    val affected: Int,
+    val affected: String,
     @ColumnInfo(name = "death")
-    val death: Int,
+    val death: String,
     @ColumnInfo(name = "recovered")
-    val recovered: Int,
+    val recovered: String,
     @ColumnInfo(name = "active")
     val active: String,
     @ColumnInfo(name = "serious")
