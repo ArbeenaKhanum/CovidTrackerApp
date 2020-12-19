@@ -15,6 +15,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.CovidTracker">
+        <activity android:name=".activities.LogoutActivity"></activity>
         <activity android:name=".activities.ExitActivity"></activity>
         <activity android:name=".activities.LogInActivity"/>
         <activity android:name=".activities.SplashActivity">

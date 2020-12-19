@@ -1,10 +1,11 @@
 package com.example.covidtracker.fragments
 
+import android.app.ActivityOptions
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.net.Uri
+import android.os.Build
 import android.os.Bundle
-import android.view.Gravity
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -14,10 +15,8 @@ import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.transition.Slide
-import androidx.transition.TransitionManager
 import com.example.covidtracker.R
-import com.example.covidtracker.activities.LogInActivity
+import com.example.covidtracker.activities.LogoutActivity
 import com.example.covidtracker.adapter.StatesAdapter
 import com.example.covidtracker.listerners.StatesRecyclerViewItemClick
 import com.example.covidtracker.model.StatesResponseModel
@@ -25,7 +24,6 @@ import com.example.covidtracker.viewmodel.StatesViewModel
 import com.example.covidtracker.viewmodelfactory.StatesViewModelFactory
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import kotlinx.android.synthetic.main.fragment_home.*
-import kotlinx.android.synthetic.main.layoutslide.*
 
 
 class HomeFragment : Fragment(), StatesRecyclerViewItemClick {
@@ -38,11 +36,6 @@ class HomeFragment : Fragment(), StatesRecyclerViewItemClick {
         super.onCreate(savedInstanceState)
 
     }
-
-//    override fun onAttach(context: Context) {
-//        super.onAttach(context)
-//        listener = context as FragmentListener
-//    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -80,35 +73,11 @@ class HomeFragment : Fragment(), StatesRecyclerViewItemClick {
         sendSms.setOnClickListener {
             sendSMS()
         }
-        when (view?.id) {
-            R.id.ibHomeMenu -> {
-                slideRight()
-            }
-            R.id.layoutslide -> {
-                slideLeft()
-            }
+
+        ibHomeMenu.setOnClickListener {
+            logoutActivity()
         }
-        ibHomeMenu.setOnClickListener {}
 
-        ivLogout.setOnClickListener(View.OnClickListener {
-            val i = Intent(context, LogInActivity::class.java)
-            startActivity(i)
-        })
-
-    }
-
-    private fun slideRight() {
-        val slide = Slide()
-        slide.slideEdge = Gravity.START
-        TransitionManager.beginDelayedTransition(layoutslide, slide)
-        layoutslide.visibility = View.VISIBLE
-    }
-
-    private fun slideLeft() {
-        val slide = Slide()
-        slide.slideEdge = Gravity.START
-        TransitionManager.beginDelayedTransition(layoutslide, slide)
-        layoutslide.visibility = View.GONE
     }
 
     private fun observeLiveDataFromDB() {
@@ -120,23 +89,15 @@ class HomeFragment : Fragment(), StatesRecyclerViewItemClick {
         })
     }
 
-//    private fun observeLiveData() {
-//        statesViewModel.liveData.observe(this, Observer {
-//            when (it) {
-//                is StatesUIModel.Success -> {
-//                    statesAdapter.updateStatesList(it.statesResponseList)
-//                }
-//
-//                is StatesUIModel.Failure -> {
-//                    Toast.makeText(
-//                        context,
-//                        "Error message ${it.error}",
-//                        Toast.LENGTH_SHORT
-//                    ).show()
-//                }
-//            }
-//        })
-//    }
+    private fun logoutActivity() {
+        val i = Intent(context, LogoutActivity::class.java)
+        if (Build.VERSION.SDK_INT > 20) {
+            val options = ActivityOptions.makeSceneTransitionAnimation(activity)
+            startActivity(i, options.toBundle())
+        } else {
+            startActivity(i)
+        }
+    }
 
     private fun setRecyclerStateData() {
         statesAdapter = StatesAdapter(statesResponseList, this)
@@ -227,6 +188,24 @@ class HomeFragment : Fragment(), StatesRecyclerViewItemClick {
 //        listener.openStats(statesResponse.state!!)
 
     }
+
+    //    private fun observeLiveData() {
+//        statesViewModel.liveData.observe(this, Observer {
+//            when (it) {
+//                is StatesUIModel.Success -> {
+//                    statesAdapter.updateStatesList(it.statesResponseList)
+//                }
+//
+//                is StatesUIModel.Failure -> {
+//                    Toast.makeText(
+//                        context,
+//                        "Error message ${it.error}",
+//                        Toast.LENGTH_SHORT
+//                    ).show()
+//                }
+//            }
+//        })
+//    }
 
 
 //    private fun spinnerSelection(view: View) {
