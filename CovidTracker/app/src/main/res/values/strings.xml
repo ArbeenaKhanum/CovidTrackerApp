@@ -5,5 +5,4 @@
     <string name="invalid_password">"Password Invalid"</string>
     <string name="required_email">"Email field cannot be empty"</string>
     <string name="invalid_email">"Email address Invalid"</string>
-
 </resources>

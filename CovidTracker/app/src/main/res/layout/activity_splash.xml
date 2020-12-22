@@ -20,7 +20,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="10dp"
-        android:text="Covid-19 Tracker"
+        android:text="Covid-19 Tracer"
         android:textColor="@color/purple_700"
         android:textSize="28sp"
         android:textStyle="bold" />
