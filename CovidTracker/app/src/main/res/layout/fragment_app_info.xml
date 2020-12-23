@@ -1,14 +1,43 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#FBF192"
+    android:gravity="center"
+    android:orientation="vertical"
     tools:context=".fragments.AppInfoFragment">
 
     <!-- TODO: Update blank fragment layout -->
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/under_maintenance" />
+
     <TextView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:layout_height="wrap_content"
+        android:text="Page under maintenance"
+        android:textAlignment="center"
+        android:textColor="@color/purple_500"
+        android:textSize="18sp"
+        android:textStyle="bold" />
 
-</FrameLayout>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Sorry for the inconvenience. This won't take long."
+        android:textAlignment="center"
+        android:textColor="@color/purple_500"
+        android:textSize="16sp" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="We are doing our best to get it back."
+        android:textAlignment="center"
+        android:textColor="@color/purple_500"
+        android:textSize="16sp" />
+
+</LinearLayout>
