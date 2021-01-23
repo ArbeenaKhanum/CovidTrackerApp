@@ -1,5 +1,3 @@
-# CovidTrackerApp
-
 # Covid Tracker App
 
 ###### Covid-19 Tracer app provides information about the corona-virus cases.
@@ -18,4 +16,4 @@
 
 |Splash screen| Login Screen |
 |:---|:---|
-|  |    |
+|  | <img src=Images/covidtracer_login.jpeg height="500px"/>   |
