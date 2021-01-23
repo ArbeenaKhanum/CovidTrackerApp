@@ -1,6 +1,6 @@
 # Covid Tracker App
 
-###### Covid-19 Tracer app provides information about the corona-virus cases.
+###### Covid-19 Tracker app provides information about the corona-virus cases.
 
 # Using Tech
  * Kotlin
@@ -14,6 +14,10 @@
 * The data count of cases are provided as per the days such as yesterday, today and total number of corona virus cases.
 * In case of emergency, user can contact through call or sms.
 
-|Splash screen| Login Screen |
+# Screenshots with description
+
+After opening application you will find the welcome screen that stay in for 3 seconds. Then you can see login screen where you can enter your e-mail address and password in order to access the app.
+
+|**Welcome screen**| **Login Screen** |
 |:---|:---|
-|  | <img src=Images/covidtracer_login.jpeg height="500px"/>   |
+|<img src=Images/covidtracer_splash.jpeg height="500px"/>  | <img src=Images/covidtracer_login.jpeg height="500px"/>   |
