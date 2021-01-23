@@ -26,6 +26,7 @@
             android:layout_marginStart="20dp"
             android:layout_marginTop="40dp"
             android:layout_marginEnd="20dp"
+            android:padding="10dp"
             android:orientation="vertical">
 
             <com.google.android.material.textfield.TextInputLayout
@@ -37,8 +38,10 @@
                     android:id="@+id/tvEmail"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:background="@drawable/login_email"
                     android:hint="Enter the email address"
                     android:inputType="textEmailAddress"
+                    android:textColorHint="@color/white"
                     android:maxLines="1"
                     android:singleLine="true" />
 
@@ -55,6 +58,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="Enter the password"
+                    android:background="@drawable/login_email"
+                    android:textColorHint="@android:color/white"
                     android:imeActionId="@android:integer/status_bar_notification_info_maxnum"
                     android:imeActionLabel="Invalid password"
                     android:imeOptions="actionUnspecified"
@@ -79,6 +84,7 @@
                 android:layout_marginStart="12dp"
                 android:layout_marginTop="16dp"
                 android:layout_marginEnd="12dp"
+                android:padding="10dp"
                 android:backgroundTint="#3F51B5"
                 android:text="Sign in"
                 android:textAlignment="center"
