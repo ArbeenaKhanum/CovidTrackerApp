@@ -38,6 +38,7 @@ On click of back button, the exit screen is displayed and app will be closed aft
 |<img src=Images/covidtracker_state_list.jpeg height="500px"/>  | <img src=Images/covidtracer_graph.jpeg height="500px"/> | <img src=Images/covidtracker_exit.png height="500px"/>|
 
 
+
 ## Covid-19 Tracker App Demo
 
-"https://user-images.githubusercontent.com/62066697/105625416-389a5d80-5e4f-11eb-9954-0d949fdbea05.mp4"
+https://user-images.githubusercontent.com/62066697/105625416-389a5d80-5e4f-11eb-9954-0d949fdbea05.mp4
