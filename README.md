@@ -40,6 +40,4 @@ On click of back button, the exit screen is displayed and app will be closed aft
 
 ## Covid-19 Tracker App Demo
 
-<video width="320px" height="240px" controls>
- <source src="Images/covid_tracker_video.mp4" type="video/mp4">
- </video>
+"https://user-images.githubusercontent.com/62066697/105625416-389a5d80-5e4f-11eb-9954-0d949fdbea05.mp4"
