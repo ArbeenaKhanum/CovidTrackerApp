@@ -32,8 +32,14 @@ The home screen contains helpline options such as call and sms. The Statistics s
 On click of view states button, list of all states are displayed in the form recyclerview. On click of each states, it's respective data is displayed on the statistics screen.
 The data is displayed as yesterday, today and total number of corona virus cases in the country as well as global accordingly.
 On click of back button, the exit screen is displayed and app will be closed after 2 seconds.
-
+ 
 |**States list data**| **Statistic data** |**Exit Screen**|
 |:---|:---|:---|
 |<img src=Images/covidtracker_state_list.jpeg height="500px"/>  | <img src=Images/covidtracer_graph.jpeg height="500px"/> | <img src=Images/covidtracker_exit.png height="500px"/>|
 
+
+## Covid-19 Tracker App Demo
+
+<video width="320px" height="240px" controls>
+ <source src="Images/covid_tracker_video.mp4" type="video/mp4">
+ </video>
