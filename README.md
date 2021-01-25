@@ -5,6 +5,7 @@
 ## Tech Stacks Used
  * Kotlin
  * Retrofit
+ * Room database
  * MVVM architecture
 
 ## Features
