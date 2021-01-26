@@ -2,7 +2,7 @@
 
 ###### Covid-19 Tracker app provides information about the corona-virus cases.
 
-## Tech Stacks Used
+## Technologies
  * Kotlin
  * Retrofit
  * Room database
