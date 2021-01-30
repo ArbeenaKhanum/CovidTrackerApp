@@ -15,6 +15,12 @@
 * The data count of cases are provided as per yesterday, today and total number of corona virus cases.
 * In case of emergency, user can contact through call or sms.
 
+--------
+
+## Covid-19 Tracker App **[Video](https://user-images.githubusercontent.com/62066697/105625416-389a5d80-5e4f-11eb-9954-0d949fdbea05.mp4)**
+
+---------
+
  ## Screenshots with description
 
 After opening application you will find the welcome screen that stays in for 3 seconds. Then you can see login screen where you can enter your e-mail address and password in order to access the app.
@@ -37,7 +43,3 @@ On click of back button, the exit screen is displayed and app will be closed aft
 |**States list data**| **Statistics data** |**Exit Screen**|
 |:---|:---|:---|
 |<img src=Images/covidtracker_state_list.jpeg height="500px"/>  | <img src=Images/covidtracer_graph.jpeg height="500px"/> | <img src=Images/covidtracker_exit.png height="500px"/>|
-
-
-
-## Covid-19 Tracker App **[Video](https://user-images.githubusercontent.com/62066697/105625416-389a5d80-5e4f-11eb-9954-0d949fdbea05.mp4)**
