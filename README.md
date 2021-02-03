@@ -4,7 +4,7 @@
 
 ## Technologies
  * Kotlin
- * Retrofit
+ * REST API Retrofit
  * Room database
  * MVVM architecture
 
